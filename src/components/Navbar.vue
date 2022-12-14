@@ -149,13 +149,30 @@
         </div>
       </div>
     </div>
+    <button @click="gonder()">Parent'a Gonder</button>
+    {{ ferit }}
     <!-- banner section end -->
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    ferit: {
+      type: Number,
+      default: 0,
+    },
+  },
+  data() {
+    return {
+      sefa: 10,
+    };
+  },
   methods: {
+    gonder() {
+      const result = this.ferit + this.sefa;
+      this.$emit("erdem", result);
+    },
     openNav() {
       document.getElementById("mySidenav").style.width = "250px";
     },
